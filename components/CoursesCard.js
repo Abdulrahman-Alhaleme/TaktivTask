@@ -40,7 +40,7 @@ export default function CoursesCard() {
                                         src={courses.imageSrc}
 
                                         alt="Picture of the author"
-                                        className='w-[300px] lg:h-[200px] md:h-[150px] rounded-lg'
+                                        className='lg:w-[180px] lg:h-[180px] md:h-[150px] md:w-[150px] rounded-lg'
                                     />
                                 </div>
                                 {/* end Img Col */}

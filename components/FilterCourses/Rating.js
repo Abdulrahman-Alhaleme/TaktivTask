@@ -1,34 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Select from "react-select";
+import { RiArrowDropDownLine } from "react-icons/ri"
 import Rating from '@mui/material/Rating';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 
-const SelectInput = ({ options }) => {
+
+
+const SelectInput = () => {
+
+    const options = [
+        { value: 'all', label: 'All' },
+        { value: '5', label: <Rating name="read-only" value={5} readOnly /> },
+        { value: '4', label: <Rating name="read-only" value={4} readOnly /> },
+        { value: '3', label: <Rating name="read-only" value={3} readOnly /> },
+        { value: '2', label: <Rating name="read-only" value={2} readOnly /> },
+        { value: '1', label: <Rating name="read-only" value={1} readOnly /> },
+    ];
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const customStyles = {
+        control: provided => ({
+            ...provided,
+            border: "none",
+            boxShadow: "none",
+            marginTop: 0,
+            backgroundColor: "transparent",
+        }),
+        dropdownIndicator: provided => ({
+            ...provided,
+            display: "none",
+        }),
+        indicatorSeparator: () => ({
+            display: "none",
+        }),
+        menu: provided => ({
+            ...provided,
+            marginTop: 0,
+            width: 248,
+
+        }),
+        menuPortal: base => ({
+            ...base,
+            maxWidth: '100%',
+        }),
+        menuList: base => ({
+            ...base,
+            padding: 0,
+        }),
+    };
+
     return (
-        <div className="py-[10px] px-4 sm:w-[272px] w-[343px] border rounded-lg gap-[10px] sm:h-[64px] ">
-            <label htmlFor="mySelect" className="sm:text-custom-sm text-[12px]">
-                Rating
-            </label>
-            <Select
-                id="mySelect"
-                name="subject"
-                className="w-full sm:text-custom-base text-custom-xs  "
-                defaultValue="all"
-                sx={{
-                    "&:hover": {
-                        all: "unset"
-                    }
-                }}
-            >
-                <MenuItem value="all" >All Ratings</MenuItem>
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                        <Rating name="read-only" value={parseInt(option.value)} readOnly />
-                    </MenuItem>
-                ))}
-            </Select>
+        <div
+            className='sm:w-[272px] w-[343px]  h-16 border flex-row border-grayscale_4 px-4 py-1 flex gap-[10px] rounded-lg'
+            onClick={toggleDropdown}
+        >
+            <div className='sm:w-[206px] w-[277px] h-[47px] flex flex-col'>
+                <label className='ml-[10px] text-custom-sm text-grayscale_1 font-medium'>Rating</label>
+                <Select
+                    className='text-custom-base'
+                    styles={customStyles}
+                    options={options}
+                    placeholder="Select Rating"
+                    isSearchable={false}
+                    menuIsOpen={isDropdownOpen}
+
+                />
+            </div>
+
+            <div className='flex items-center text-grayscale_3'>
+                <RiArrowDropDownLine className='h-6 w-6' />
+            </div>
         </div>
     );
-};
+}
 
 export default SelectInput;
+
+

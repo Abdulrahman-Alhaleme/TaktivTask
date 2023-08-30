@@ -28,7 +28,7 @@ export default function MyComponent() {
                 tutorsData.map((tutor) => (
                     <>
                         {/* start large screen tutor card */}
-                        <div key={tutor.id} className='w-[975px] pt-4 pr-6 pb-6 pl-4 sm:flex hidden items-start rounded-lg border bg-primary_4'>
+                        <div key={tutor.id} className='lg:w-[975px] md:w-[700px] pt-4 pr-6 pb-6 pl-4 sm:flex hidden items-start rounded-lg border bg-primary_4'>
                             {/* start img and name and university and rating for tutor  */}
                             <div className='flex flex-row gap-6'>
                                 <div className='relative'>
@@ -38,16 +38,15 @@ export default function MyComponent() {
 
                                     <Image
                                         src={tutor.imageSrc}
-                                        width={180}
-                                        height={180}
+
                                         alt="Picture of the author"
-                                        className=''
+                                        className='lg:w-[180px] lg:h-[180px] md:h-[150px] md:w-[150px] rounded-lg'
                                     />
                                 </div>
-                                <div className='flex flex-col gap-6 '>
+                                <div className='flex flex-col gap-6 lg:w-[501] md:w-[300]'>
 
-                                    <div className='flex flex-row justify-between   h-[53px] w-[501]'>
-                                        <div>
+                                    <div className='flex flex-row justify-between   h-[53px] '>
+                                        <div className=''>
                                             <h1 className='font-custom-semi-bold text-grayscale_1 text-custom-2xl'>{tutor.name}</h1>
                                             <p className='font-custom-semi-bold text-grayscale_3 text-custom-base'>{tutor.university}</p>
                                         </div>
@@ -81,10 +80,10 @@ export default function MyComponent() {
 
                                         {/* start bio and subject and languages */}
                                     </div>
-                                    <div className='w-[501px]'>
+                                    <div className=''>
                                         <p className='text-custom-base text-grayscale_2 leading-5'>{tutor.bio}</p>
                                     </div>
-                                    <div className='w-[501px]'>
+                                    <div className=''>
                                         <p className='text-grayscale_3 font-custom-semi-bold leading-5 text-custom-sm'>Subjects:<span className='text-custom-sm font-custom-regular leading-5'>  {tutor.subjects}</span></p>
                                         <p className='text-grayscale_3 font-custom-semi-bold leading-5 text-custom-sm'>Languages:<span className='text-custom-sm font-custom-regular leading-5'> {tutor.languages}</span></p>
                                     </div>

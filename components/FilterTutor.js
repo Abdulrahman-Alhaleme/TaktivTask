@@ -57,14 +57,9 @@ const AvailabilityOptions = [
 
 ]
 
-const RatingOptions = [
-    { value: "5" },
-    { value: "4" },
-    { value: "3" },
-    { value: "2" },
-    { value: "1" },
 
-]
+
+
 
 
 
@@ -96,21 +91,21 @@ const ParentComponent = () => {
                 Filters
             </button>
 
-            <div className="sm:inline-flex hidden p-4  flex-col items-start gap-4 border rounded-lg bg-primary_4">
-                <div className={`flex flex-row gap-3 items-start`}>
-                    <SelectSubject options={subjectOptions} />
-                    <SelectLevel options={levelOptions} />
-                    <SelectPrice options={PriceOptions} />
-                    <SelectLanguage options={languageOptions} />
+            <div className="sm:inline-flex hidden p-4  flex-col items-start gap-4 border rounded-lg bg-primary_4" >
+                <div className={`flex flex-row flex-wrap-reverse gap-3 items-start`}>
+                    <SelectSubject />
+                    <SelectLevel />
+                    <SelectPrice />
+                    <SelectLanguage />
                     <Button />
                 </div>
-                <div className={`flex flex-row gap-3 items-start ${filtersVisible ? '' : 'hidden'}`}>
-                    <SelectGender options={GenderOptions} />
-                    <SelectAvailability options={AvailabilityOptions} />
-                    <SelectFormat options={FormatOptions} />
-                    <SelectRating options={RatingOptions} />
+                <div className={`flex flex-row gap-3 flex-wrap items-start ${filtersVisible ? '' : 'hidden'}`}>
+                    <SelectGender />
+                    <SelectAvailability />
+                    <SelectFormat />
+                    <SelectRating />
                 </div>
-                <div className={`flex flex-row gap-3 items-start ${filtersVisible ? '' : 'hidden'}`}>
+                <div className={`flex flex-row gap-3 flex-wrap items-start ${filtersVisible ? '' : 'hidden'}`}>
                     <SelectAssignments />
                     <Search />
                 </div>
@@ -121,26 +116,26 @@ const ParentComponent = () => {
 
 
 
-            <div className={`sm:hidden inline-flex p-4 w-[375px]  flex-col items-center gap-4 border rounded-lg bg-primary_4  transition-transform ease-in-out duration-300 ${FilterButtonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            <div className={`sm:hidden inline-flex p-4 w-[375px]  flex-col items-center gap-4 border rounded-lg bg-primary_4  transition-transform ease-in-out duration-300 `} style={{ display: FilterButtonVisible ? '' : 'none' }}>
                 <div className={`flex flex-col gap-3 items-center w-full `}>
-                    <SelectSubject options={subjectOptions} />
-                    <SelectLevel options={levelOptions} />
-                    <SelectPrice options={PriceOptions} />
-                    <SelectLanguage options={languageOptions} />
+                    <SelectSubject />
+                    <SelectLevel />
                 </div>
                 <div className={`flex flex-col gap-3 items-start ${filtersVisible ? '' : 'hidden'}`}>
-                    <SelectGender options={GenderOptions} />
-                    <SelectAvailability options={AvailabilityOptions} />
-                    <SelectFormat options={FormatOptions} />
-                    <SelectRating options={RatingOptions} />
+                    <SelectPrice />
+                    <SelectLanguage />
+                    <SelectGender />
+                    <SelectAvailability />
+                    <SelectFormat />
+                    <SelectRating />
                     <SelectAssignments />
                     <Search />
                 </div>
 
-                <Button />
-                <span className="font-medium text-primary_1 text-[15px] cursor-pointer" onClick={toggleFilters}>
+                <span className="font-medium text-primary_1 text-custom-base flex self-start cursor-pointer" onClick={toggleFilters}>
                     {filtersVisible ? 'Hide Filters' : 'More Filters'}
                 </span>
+                <Button />
             </div>
         </div>
     );
